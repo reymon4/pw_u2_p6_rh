@@ -12,16 +12,16 @@
       <header></header>
       <nav></nav>
       <section>
-        <h1>Hello world from Vue.js</h1>
-        <p>{{1+1}}</p>
-
-        <p>{{[1,2,3,4]}}</p>
-        <p>{{true? "Verdadero": "Falso"}}</p>
-        <p>Hola <b>Mundo</b></p>
-        <p>{{message}}</p>
-        <p>{{value}}</p>
-        <button @click="changeText()">Change text</button>
-        <button @click="plus()">Plus</button>
+      <p>{{mensaje}}</p>
+      <p>{{studentsList[0]}}</p>
+      <button @click="addStudent()">Add Student</button>
+      <ul>
+        <!-- <li v-for="student in studentsList"> -->
+            <li v-for="({name, lastName}, index) in studentsList">
+            <h3>{{index+1}} ->{{name}}</h3>
+            <h4>{{lastName}}</h4>
+        </li>
+        
       </section>
       <footer></footer>
     </div>
