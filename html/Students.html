@@ -14,12 +14,16 @@
       <section>
       <p>{{mensaje}}</p>
       <p>{{studentsList[0]}}</p>
+      <label for="name">Name:</label>
+      <input type="text" id="name" v-model="name" />
+      <label for="lastName">LastName:</label>
+      <input type="text" id="lastName" v-model="lastName" v-on:keypress.enter="addStudentByKey"/>
       <button @click="addStudent()">Add Student</button>
       <ul>
         <!-- <li v-for="student in studentsList"> -->
             <li v-for="({name, lastName}, index) in studentsList">
-            <h3>{{index+1}} ->{{name}}</h3>
-            <h4>{{lastName}}</h4>
+            <h3 v-if="name!==undefined">{{index+1}} ->{{name}}</h3>
+            <h4 v-if="lastName!==undefined">{{lastName}}</h4>
         </li>
         
       </section>

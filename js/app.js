@@ -23,7 +23,9 @@ const app = Vue.createApp({
       nombre: "KING",
       message: "Reactive Propertie - Hello World",
       value: 7,
-      studentsList: students
+      studentsList: students,
+      name: null,
+      lastName: null,
     };
   },
   //Option API de métodos
@@ -34,9 +36,26 @@ const app = Vue.createApp({
     plus() {
       this.value += 15;
     },
-    addStudent(){
-      this.studentsList.push({name: "New Student", lastName: "New Student"});
-    }
+    addStudent() {
+      console.log(this.name + " " + this.lastName);
+      this.studentsList.push({ name: this.name, lastName: this.lastName });
+      this.reset();
+    },
+    reset() {
+      this.name = null;
+      this.lastName = null;
+    },
+    /* Desestrucuramos "event" y obtenemos el charCode */
+    addStudentByKey({ charCode }) {
+      console.log("keypress:" + charCode);
+      /* La línea siguiente se elimina por el tema de rendimiento. Y, se optimiza con el modificar de evento */
+      /* Es decir: v-on:keypress.enter */
+      //if(charCode==13){
+      if (this.name !== null && this.apellido !== null) {
+        this.addStudent();
+      }
+      // }
+    },
   },
 });
 /* Nombre único de la app a través del numeral */
